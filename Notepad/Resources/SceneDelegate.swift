@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        let coordinator = Coordinator(root: HomeRouter.allNotes)
+        let coordinator = Coordinator(root: NotesRouter.notes)
         self.window?.rootViewController = coordinator.navigationController
         self.window?.makeKeyAndVisible()
         coordinator.start()
