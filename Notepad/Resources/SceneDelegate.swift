@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-        let notesViewModel = NotesViewModel()
+        let notesViewModel = NotesViewModel(service: NotesMockupService())
         let coordinator = Coordinator(root: NotesRouter.notes(notesViewModel))
         
         self.window?.rootViewController = coordinator.navigationController

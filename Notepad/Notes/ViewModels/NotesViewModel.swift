@@ -8,11 +8,19 @@
 import Foundation
 
 final class NotesViewModel {
+    private let service: NotesService
     private(set) var notes: [Note] = []
     
-    init() {
-        for i in 0...10 {
-            notes.append(Note(title: "nota \(i)", text: "texto \(i)"))
+    init(service: NotesService) {
+        self.service = service
+        self.notes = service.getNotes()
+    }
+    
+    func editNote(_ note: Note) {
+        do {
+            try service.editNote(note)
+        } catch {
+            print("Error while trying to edit note: \(error.localizedDescription)")
         }
     }
 }

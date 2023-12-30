@@ -21,6 +21,7 @@
 		67F3053F2B3FE3DB00D1009F /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3053E2B3FE3DB00D1009F /* EditNoteViewController.swift */; };
 		67F305412B407E1E00D1009F /* Collection+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305402B407E1E00D1009F /* Collection+safe.swift */; };
 		67F305442B4084EE00D1009F /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305432B4084EE00D1009F /* EditNoteView.swift */; };
+		67F305472B40A83900D1009F /* NotesMockupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305462B40A83900D1009F /* NotesMockupService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		67F3053E2B3FE3DB00D1009F /* EditNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		67F305402B407E1E00D1009F /* Collection+safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+safe.swift"; sourceTree = "<group>"; };
 		67F305432B4084EE00D1009F /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
+		67F305462B40A83900D1009F /* NotesMockupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMockupService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		67F3052B2B3F74B700D1009F /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				67F305452B40A82600D1009F /* Services */,
 				67F3053A2B3FD9BE00D1009F /* ViewControllers */,
 				67F305372B3FD93400D1009F /* Views */,
 				67F305342B3FD8B400D1009F /* ViewModels */,
@@ -153,6 +156,14 @@
 				67F305402B407E1E00D1009F /* Collection+safe.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		67F305452B40A82600D1009F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				67F305462B40A83900D1009F /* NotesMockupService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				67F305292B3F6CAA00D1009F /* Coordinator.swift in Sources */,
 				67F3052D2B3F74EF00D1009F /* ViewCode.swift in Sources */,
 				67F305332B3FD89000D1009F /* Note.swift in Sources */,
+				67F305472B40A83900D1009F /* NotesMockupService.swift in Sources */,
 				67F305182B3F54A400D1009F /* NotesViewController.swift in Sources */,
 				67F305442B4084EE00D1009F /* EditNoteView.swift in Sources */,
 				67F305412B407E1E00D1009F /* Collection+safe.swift in Sources */,

@@ -8,8 +8,9 @@
 import Foundation
 
 class Note {
-    let title: String
-    let text: String
+    let id: UUID = UUID()
+    var title: String
+    var text: String
     
     init(title: String = "", text: String = "") {
         self.title = title

@@ -9,10 +9,14 @@ import UIKit
 
 final class EditNoteViewController: UIViewController {
     let note: Note
+    let viewModel: NotesViewModel
+    
     let editNoteView = EditNoteView()
     
-    init(note: Note) {
+    init(note: Note, viewModel: NotesViewModel) {
         self.note = note
+        self.viewModel = viewModel
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -21,9 +25,20 @@ final class EditNoteViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         editNoteView.titleTextField.text = note.title
         editNoteView.textView.text = note.text
         
         view = editNoteView
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let title = editNoteView.titleTextField.text, let text = editNoteView.textView.text else { return }
+        
+        note.title = title
+        note.text = text
+        viewModel.editNote(note)
     }
 }

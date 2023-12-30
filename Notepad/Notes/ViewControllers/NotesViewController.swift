@@ -23,7 +23,14 @@ final class NotesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Notes"
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.reuseIdentifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,6 +54,6 @@ final class NotesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.selectRow(at: nil, animated: false, scrollPosition: .none)
         guard let note = viewModel.notes[safe: indexPath.item] else { return }
-        coordinator.show(.editNote(note))
+        coordinator.show(.editNote(note, viewModel))
     }
 }

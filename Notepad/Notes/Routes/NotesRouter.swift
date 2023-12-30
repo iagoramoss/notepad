@@ -9,7 +9,7 @@ import UIKit
 
 enum NotesRouter: NavigationRouter {
     case notes(NotesViewModel)
-    case editNote(Note = .init())
+    case editNote(Note = .init(), NotesViewModel)
     
     var transition: NavigationTransitionStyle {
         switch self {
@@ -26,8 +26,8 @@ enum NotesRouter: NavigationRouter {
         case .notes(let viewModel):
             return NotesViewController(coordinator: coordinator, viewModel: viewModel)
         
-        case .editNote(let note):
-            return EditNoteViewController(note: note)
+        case .editNote(let note, let viewModel):
+            return EditNoteViewController(note: note, viewModel: viewModel)
         }
     }
 }
