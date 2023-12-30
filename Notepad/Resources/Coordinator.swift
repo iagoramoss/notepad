@@ -15,7 +15,7 @@ enum NavigationTransitionStyle {
 
 protocol NavigationRouter {
     var transition: NavigationTransitionStyle { get }
-    var viewController: UIViewController { get }
+    func viewController(coordinator: Coordinator<Self>) -> UIViewController
 }
 
 final class Coordinator<Router: NavigationRouter> {
@@ -34,15 +34,15 @@ final class Coordinator<Router: NavigationRouter> {
     func show(_ route: Router, animated: Bool = true) {
         switch route.transition {
         case .push:
-            navigationController.pushViewController(route.viewController, animated: animated)
+            navigationController.pushViewController(route.viewController(coordinator: self), animated: animated)
             
         case .presentModally:
             navigationController.modalPresentationStyle = .formSheet
-            navigationController.present(route.viewController, animated: animated)
+            navigationController.present(route.viewController(coordinator: self), animated: animated)
             
         case .presentFullscreen:
             navigationController.modalPresentationStyle = .fullScreen
-            navigationController.present(route.viewController, animated: animated)
+            navigationController.present(route.viewController(coordinator: self), animated: animated)
         }
     }
 }
