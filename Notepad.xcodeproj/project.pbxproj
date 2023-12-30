@@ -22,6 +22,8 @@
 		67F305412B407E1E00D1009F /* Collection+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305402B407E1E00D1009F /* Collection+safe.swift */; };
 		67F305442B4084EE00D1009F /* EditNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305432B4084EE00D1009F /* EditNoteView.swift */; };
 		67F305472B40A83900D1009F /* NotesMockupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305462B40A83900D1009F /* NotesMockupService.swift */; };
+		67F305492B40BF7B00D1009F /* NotesServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305482B40BF7B00D1009F /* NotesServiceProtocol.swift */; };
+		67F3054D2B40BFA900D1009F /* NoteError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F3054C2B40BFA900D1009F /* NoteError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		67F305402B407E1E00D1009F /* Collection+safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+safe.swift"; sourceTree = "<group>"; };
 		67F305432B4084EE00D1009F /* EditNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNoteView.swift; sourceTree = "<group>"; };
 		67F305462B40A83900D1009F /* NotesMockupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMockupService.swift; sourceTree = "<group>"; };
+		67F305482B40BF7B00D1009F /* NotesServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesServiceProtocol.swift; sourceTree = "<group>"; };
+		67F3054C2B40BFA900D1009F /* NoteError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 		67F3052B2B3F74B700D1009F /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				67F3054B2B40BF9700D1009F /* Errors */,
+				67F3054A2B40BF7F00D1009F /* Protocols */,
 				67F305452B40A82600D1009F /* Services */,
 				67F3053A2B3FD9BE00D1009F /* ViewControllers */,
 				67F305372B3FD93400D1009F /* Views */,
@@ -164,6 +170,22 @@
 				67F305462B40A83900D1009F /* NotesMockupService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		67F3054A2B40BF7F00D1009F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				67F305482B40BF7B00D1009F /* NotesServiceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		67F3054B2B40BF9700D1009F /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				67F3054C2B40BFA900D1009F /* NoteError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +263,7 @@
 				67F305332B3FD89000D1009F /* Note.swift in Sources */,
 				67F305472B40A83900D1009F /* NotesMockupService.swift in Sources */,
 				67F305182B3F54A400D1009F /* NotesViewController.swift in Sources */,
+				67F3054D2B40BFA900D1009F /* NoteError.swift in Sources */,
 				67F305442B4084EE00D1009F /* EditNoteView.swift in Sources */,
 				67F305412B407E1E00D1009F /* Collection+safe.swift in Sources */,
 				67F305362B3FD8C100D1009F /* NotesViewModel.swift in Sources */,
@@ -249,6 +272,7 @@
 				67F305302B3F751400D1009F /* NotesRouter.swift in Sources */,
 				67F3053F2B3FE3DB00D1009F /* EditNoteViewController.swift in Sources */,
 				67F305162B3F54A400D1009F /* SceneDelegate.swift in Sources */,
+				67F305492B40BF7B00D1009F /* NotesServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

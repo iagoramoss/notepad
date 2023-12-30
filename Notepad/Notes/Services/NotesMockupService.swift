@@ -7,29 +7,19 @@
 
 import Foundation
 
-enum NoteError: LocalizedError {
-    case notExists
-    
-    var errorDescription: String? {
-        switch self {
-        case .notExists:
-            "There's no note with this ID!"
-        }
-    }
-}
-
-protocol NotesService {
-    func editNote(_ note: Note) throws
-    func getNotes() -> [Note]
-}
-
-final class NotesMockupService: NotesService {
+final class NotesMockupService: NotesServiceProtocol {
     private var notes: [Note] = []
     
     init() {
         for i in 0...10 {
             notes.append(Note(title: "nota \(i)", text: "texto \(i)"))
         }
+    }
+    
+    func getNotes() -> [Note] { notes }
+    
+    func createNote(_ note: Note) {
+        notes.append(note)
     }
     
     func editNote(_ note: Note) throws {
@@ -39,6 +29,4 @@ final class NotesMockupService: NotesService {
         
         notes[index] = note
     }
-    
-    func getNotes() -> [Note] { notes }
 }

@@ -37,8 +37,11 @@ final class EditNoteViewController: UIViewController {
         super.viewWillDisappear(animated)
         guard let title = editNoteView.titleTextField.text, let text = editNoteView.textView.text else { return }
         
+        let isNewNote =  note.title.isEmpty && note.text.isEmpty
+        
         note.title = title
         note.text = text
-        viewModel.editNote(note)
+        
+        isNewNote ? viewModel.createNote(note) : viewModel.editNote(note)
     }
 }

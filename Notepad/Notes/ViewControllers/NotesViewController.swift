@@ -24,7 +24,7 @@ final class NotesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Notes"
+        setupNavigationBar()
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.reuseIdentifier)
     }
     
@@ -33,12 +33,25 @@ final class NotesViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    private func setupNavigationBar() {
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.coordinator.show(.editNote(self.viewModel))
+        }
+        
+        let button = UIButton(primaryAction: action)
+        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        
+        navigationItem.title = "Notes"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.notes.count
+        return viewModel.getNotes().count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let title = viewModel.notes[safe: indexPath.item]?.title else { return NoteCell() }
+        guard let title = viewModel.getNotes()[safe: indexPath.item]?.title else { return NoteCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseIdentifier, for: indexPath)
         
         guard let cell = cell as? NoteCell else {
@@ -53,7 +66,7 @@ final class NotesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.selectRow(at: nil, animated: false, scrollPosition: .none)
-        guard let note = viewModel.notes[safe: indexPath.item] else { return }
-        coordinator.show(.editNote(note, viewModel))
+        guard let note = viewModel.getNotes()[safe: indexPath.item] else { return }
+        coordinator.show(.editNote(viewModel, note))
     }
 }
