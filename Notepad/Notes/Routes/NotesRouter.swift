@@ -20,7 +20,7 @@ enum NotesRouter: NavigationRouter {
     var viewController: UIViewController {
         switch self {
         case .notes:
-            return UIViewController()
+            return NoteViewController()
         }
     }
 }
