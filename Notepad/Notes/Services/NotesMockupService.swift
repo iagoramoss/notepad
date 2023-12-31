@@ -29,4 +29,8 @@ final class NotesMockupService: NotesServiceProtocol {
         
         notes[index] = note
     }
+    
+    func deleteNote(by id: UUID) {
+        notes.removeAll(where: { $0.id == id })
+    }
 }

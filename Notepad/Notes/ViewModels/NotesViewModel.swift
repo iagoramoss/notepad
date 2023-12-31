@@ -18,6 +18,10 @@ final class NotesViewModel {
         service.getNotes()
     }
     
+    func createNote(_ note: Note) {
+        service.createNote(note)
+    }
+    
     func editNote(_ note: Note) {
         do {
             try service.editNote(note)
@@ -26,7 +30,7 @@ final class NotesViewModel {
         }
     }
     
-    func createNote(_ note: Note) {
-        service.createNote(note)
+    func deleteNote(by id: UUID) {
+        service.deleteNote(by: id)
     }
 }

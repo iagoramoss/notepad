@@ -11,4 +11,5 @@ protocol NotesServiceProtocol {
     func getNotes() -> [Note]
     func createNote(_ note: Note)
     func editNote(_ note: Note) throws
+    func deleteNote(by id: UUID)
 }
