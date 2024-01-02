@@ -19,11 +19,7 @@ final class NotesService: NotesServiceProtocol {
     }
     
     func getNotes() throws -> [Note] {
-        guard let appDelegate = appDelegate else { throw NotepadError.appDelegate }
-        
-        let notes = try getNoteEntities()
-        
-        return try getNoteEntities().map({
+        try getNoteEntities().map({
             guard let id = $0.id, let date = $0.date, let title = $0.title, let text = $0.text else {
                 throw NotepadError.emptyValue($0)
             }

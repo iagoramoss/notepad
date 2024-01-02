@@ -28,7 +28,7 @@ final class NotesMockupService: NotesServiceProtocol {
     }
     
     func deleteNote(by id: UUID) throws {
-        guard let deletedNote = notes.first(where: { $0.id == id }) else { throw NotepadError.notExists }
+        guard notes.first(where: { $0.id == id }) != nil else { throw NotepadError.notExists }
         notes.removeAll(where: { $0.id == id })
     }
 }
