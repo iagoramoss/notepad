@@ -23,14 +23,12 @@ final class NotesMockupService: NotesServiceProtocol {
     }
     
     func editNote(_ note: Note) throws {
-        guard let index = notes.firstIndex(where: { $0.id == note.id }) else {
-            throw NoteError.notExists
-        }
-        
+        guard let index = notes.firstIndex(where: { $0.id == note.id }) else { throw NotepadError.notExists}
         notes[index] = note
     }
     
-    func deleteNote(by id: UUID) {
+    func deleteNote(by id: UUID) throws {
+        guard let deletedNote = notes.first(where: { $0.id == id }) else { throw NotepadError.notExists }
         notes.removeAll(where: { $0.id == id })
     }
 }

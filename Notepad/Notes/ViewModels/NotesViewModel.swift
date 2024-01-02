@@ -15,11 +15,20 @@ final class NotesViewModel {
     }
     
     func getNotes() -> [Note] {
-        service.getNotes().sorted(by: { $0.date < $1.date })
+        do {
+            return try service.getNotes().sorted(by: { $0.date < $1.date })
+        } catch {
+            print("Error while fetching notes: \(error.localizedDescription)")
+            return []
+        }
     }
     
     func createNote(_ note: Note) {
-        service.createNote(note)
+        do {
+            try service.createNote(note)
+        } catch {
+            print("Error while creating note: \(error.localizedDescription)")
+        }
     }
     
     func editNote(_ note: Note) {
@@ -31,6 +40,10 @@ final class NotesViewModel {
     }
     
     func deleteNote(by id: UUID) {
-        service.deleteNote(by: id)
+        do {
+            try service.deleteNote(by: id)
+        } catch {
+            print("Error while deleting note: \(error.localizedDescription)")
+        }
     }
 }
