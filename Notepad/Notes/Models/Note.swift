@@ -8,7 +8,8 @@
 import Foundation
 
 class Note {
-    let id: UUID = UUID()
+    let id = UUID()
+    let date = Date()
     var title: String
     var text: String
     

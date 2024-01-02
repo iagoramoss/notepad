@@ -15,7 +15,7 @@ final class NotesViewModel {
     }
     
     func getNotes() -> [Note] {
-        service.getNotes()
+        service.getNotes().sorted(by: { $0.date < $1.date })
     }
     
     func createNote(_ note: Note) {
