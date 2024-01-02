@@ -8,14 +8,16 @@
 import UIKit
 
 final class EditNoteViewController: UIViewController {
-    let note: Note
-    let viewModel: NotesViewModel
+    private let note: Note
+    private let viewModel: NotesViewModel
     
-    let editNoteView = EditNoteView()
+    private let editNoteView = EditNoteView()
+    private let isNewNote: Bool
     
     init(note: Note, viewModel: NotesViewModel) {
         self.note = note
         self.viewModel = viewModel
+        self.isNewNote = note.title.isEmpty && note.text.isEmpty
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,6 +28,9 @@ final class EditNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        editNoteView.titleTextField.delegate = self
+        editNoteView.textView.delegate = self
         
         editNoteView.titleTextField.text = note.title
         editNoteView.textView.text = note.text
@@ -43,5 +48,17 @@ final class EditNoteViewController: UIViewController {
         note.text = text
         
         isNewNote ? viewModel.createNote(note) : viewModel.editNote(note)
+    }
+}
+
+extension EditNoteViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        note.title = textField.text ?? ""
+    }
+}
+
+extension EditNoteViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        note.text = textView.text ?? ""
     }
 }
