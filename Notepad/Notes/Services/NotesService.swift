@@ -35,6 +35,10 @@ final class NotesService: NotesServiceProtocol {
     func createNote(_ note: Note) throws {
         guard let appDelegate = appDelegate else { throw NotepadError.appDelegate }
         
+        guard try getNoteEntities().first(where: { $0.id == note.id }) == nil else {
+            throw NotepadError.alreadyExists
+        }
+        
         let noteEntity = NoteEntity(context: appDelegate.context)
         
         noteEntity.id = note.id

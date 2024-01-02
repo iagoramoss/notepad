@@ -10,6 +10,7 @@ import Foundation
 enum NotepadError: LocalizedError {
     case appDelegate
     case notExists
+    case alreadyExists
     case emptyValue(NoteEntity)
     
     var errorDescription: String? {
@@ -19,6 +20,9 @@ enum NotepadError: LocalizedError {
             
         case .notExists:
             "There's no note with this ID!"
+            
+        case .alreadyExists:
+            "A note with this ID already exists!"
             
         case .emptyValue(let note):
             "Cannot parse 'NoteEntity' to 'Note' due to an empty value on NoteEntity: \(note.description)"

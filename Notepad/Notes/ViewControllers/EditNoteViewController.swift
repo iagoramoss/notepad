@@ -40,18 +40,22 @@ final class EditNoteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        saveTitle()
+        isNewNote ? viewModel.createNote(note) : viewModel.editNote(note)
+    }
+    
+    private func saveTitle() {
+        note.title = editNoteView.titleTextField.text ?? ""
         
         if note.title.isEmpty {
             note.title = "Untitled"
         }
-        
-        isNewNote ? viewModel.createNote(note) : viewModel.editNote(note)
     }
 }
 
 extension EditNoteViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        note.title = textField.text ?? ""
+        saveTitle()
     }
 }
 
