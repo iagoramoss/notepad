@@ -24,7 +24,7 @@ final class NotesService: NotesServiceProtocol {
                 throw NotepadError.emptyValue($0)
             }
             
-            return Note(id: id, date: date, title: title, text: text)
+            return Note(id: id, date: date, title: title, text: text, isLocked: $0.isLocked)
         })
     }
     
@@ -41,6 +41,7 @@ final class NotesService: NotesServiceProtocol {
         noteEntity.date = note.date
         noteEntity.title = note.title
         noteEntity.text = note.text
+        noteEntity.isLocked = note.isLocked
         
         appDelegate.saveContext()
     }
@@ -54,6 +55,7 @@ final class NotesService: NotesServiceProtocol {
         
         editedNote.title = note.title
         editedNote.text = note.text
+        editedNote.isLocked = note.isLocked
         
         appDelegate.saveContext()
     }

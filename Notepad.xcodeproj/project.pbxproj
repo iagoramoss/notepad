@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6758DF942B44A70E008C310C /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6758DF932B44A70E008C310C /* AuthenticationController.swift */; };
 		67F305142B3F54A400D1009F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305132B3F54A400D1009F /* AppDelegate.swift */; };
 		67F305162B3F54A400D1009F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305152B3F54A400D1009F /* SceneDelegate.swift */; };
 		67F305182B3F54A400D1009F /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F305172B3F54A400D1009F /* NotesViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6758DF932B44A70E008C310C /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		67F305102B3F54A400D1009F /* Notepad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notepad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F305132B3F54A400D1009F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67F305152B3F54A400D1009F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				67F3051E2B3F54A500D1009F /* LaunchScreen.storyboard */,
 				67F305152B3F54A400D1009F /* SceneDelegate.swift */,
 				67F305132B3F54A400D1009F /* AppDelegate.swift */,
+				6758DF932B44A70E008C310C /* AuthenticationController.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				67F305442B4084EE00D1009F /* EditNoteView.swift in Sources */,
 				67F305542B4482E600D1009F /* Notepad.xcdatamodeld in Sources */,
 				67F305412B407E1E00D1009F /* Collection+safe.swift in Sources */,
+				6758DF942B44A70E008C310C /* AuthenticationController.swift in Sources */,
 				67F305362B3FD8C100D1009F /* NotesViewModel.swift in Sources */,
 				67F305142B3F54A400D1009F /* AppDelegate.swift in Sources */,
 				67F305392B3FD97300D1009F /* NoteCell.swift in Sources */,
@@ -427,6 +431,7 @@
 				DEVELOPMENT_TEAM = A7SRF7ZP35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Notepad/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need this to allow you to lock/unlock notes.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -455,6 +460,7 @@
 				DEVELOPMENT_TEAM = A7SRF7ZP35;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Notepad/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need this to allow you to lock/unlock notes.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

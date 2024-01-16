@@ -69,7 +69,16 @@ final class NotesViewController: UITableViewController {
         
         tableView.selectRow(at: nil, animated: false, scrollPosition: .none)
         guard let note = viewModel.getNotes()[safe: indexPath.item] else { return }
-        coordinator.show(.editNote(viewModel, note))
+        
+        if !note.isLocked {
+            coordinator.show(.editNote(viewModel, note))
+            return
+        }
+        
+        AuthenticationController.shared.authenticate { [weak self] isAuthenticated in
+            guard let self = self, isAuthenticated else { return }
+            coordinator.show(.editNote(viewModel, note))
+        }
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -104,22 +113,28 @@ final class NotesViewController: UITableViewController {
             self.present(alert, animated: true)
         }
         
-        deleteAction.image = UIImage(systemName: "trash")
+        let actionTitle = note.isLocked ? "unlock" : "lock"
         
-        let editAction = UIContextualAction(style: .normal, title: "edit") { [weak self] action, view, completion in
+        let lockAction = UIContextualAction(style: .normal, title: actionTitle) { [weak self] action, view, completion in
             
             guard let self = self else {
                 completion(false)
                 return
             }
             
-            self.coordinator.show(.editNote(viewModel, note))
-            completion(true)
+            AuthenticationController.shared.authenticate { [weak self] isAuthenticated in
+                guard let self = self, isAuthenticated else { return }
+                
+                note.isLocked.toggle()
+                self.viewModel.editNote(note)
+                
+                completion(true)
+            }
         }
         
-        editAction.backgroundColor = .systemYellow
-        editAction.image = UIImage(systemName: "square.and.pencil")
+        deleteAction.image = UIImage(systemName: "trash")
+        lockAction.image = UIImage(systemName: note.isLocked ? "lock.open" : "lock")
         
-        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return UISwipeActionsConfiguration(actions: [deleteAction, lockAction])
     }
 }
